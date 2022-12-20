@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-
 import axios from "axios";
+import cookie from 'js-cookie';
 
 const userLogin = async (address) => {
   try {
@@ -11,7 +11,8 @@ const userLogin = async (address) => {
   }, {
       withCredentials: true,
     });
-    console.log(response);
+    const token = cookie.get('userToken');
+    console.log(response, token);
   } catch (err) {
     console.error(err);
     throw new Error(err);
